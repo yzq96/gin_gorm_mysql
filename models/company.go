@@ -2,12 +2,13 @@ package models
 
 import (
 	"fmt"
-	"gorm.io/gorm"
 	"mingdeng/database"
+
+	"gorm.io/gorm"
 )
 
 type Company struct {
-	Name string `json:"name" gorm:"column:name;type:string;size:256;unique" form:"name"`
+	Name string `json:"name" gorm:"column:name;type:string;size:50;unique" form:"name"`
 	gorm.Model
 }
 
@@ -15,7 +16,7 @@ func (Company) TableName() string {
 	return "company"
 }
 
-func Init1() {
+func InitCompany() {
 	err := database.DB.Set("gorm:table_options", "ENGINE=InnoDB").AutoMigrate(&Company{})
 	fmt.Println(err)
 	return

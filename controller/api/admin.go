@@ -2,14 +2,19 @@ package api
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"mingdeng/models"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 //func IndexHandler(c *gin.Context) {
 //	c.HTML(http.StatusOK, "index.html", nil)
 //}
+func AdminInit(c *gin.Context) {
+	models.InitAdmin()
+	return
+}
 
 func CreateAdmin(c *gin.Context) {
 	//1.1 创建一个用于接收参数的todo结构体

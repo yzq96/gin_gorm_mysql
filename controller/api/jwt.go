@@ -3,12 +3,13 @@ package api
 import (
 	"errors"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/golang-jwt/jwt/v4"
 	"mingdeng/controller/common"
 	"mingdeng/models"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v4"
 )
 
 // MyClaims 自定义声明结构体并内嵌jwt.StandardClaims
@@ -91,7 +92,7 @@ func AuthHandler(c *gin.Context) {
 	// 校验用户名和密码是否正确
 	fmt.Println(user.Password + "2008")
 	//password md5 加密
-	password := common.Md5V(user.Password + "2008")
+	password := common.Md5V(common.Md5V(user.Password) + "2008")
 	fmt.Println(password)
 	if user.Username == admin.Username && password == admin.Password {
 		// 生成Token

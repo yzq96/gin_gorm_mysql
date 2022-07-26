@@ -1,10 +1,11 @@
 package routers
 
 import (
-	"github.com/gin-gonic/gin"
 	"mingdeng/controller/api"
 	"mingdeng/middleware"
 	"mingdeng/setting"
+
+	"github.com/gin-gonic/gin"
 )
 
 func SetupRouter() *gin.Engine {
@@ -20,6 +21,8 @@ func SetupRouter() *gin.Engine {
 	v1Group := r.Group("v1", middleware.JWTAuthMiddleware())
 	{
 		// 用户
+		// 迁移表
+		v1Group.POST("/admin/init", api.AdminInit)
 		// 添加
 		v1Group.POST("/admin", api.CreateAdmin)
 		// 查看所有的用户

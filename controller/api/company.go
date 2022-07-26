@@ -10,7 +10,7 @@ import (
 )
 
 func ComInit(c *gin.Context) {
-	models.Init1()
+	models.InitCompany()
 	return
 }
 

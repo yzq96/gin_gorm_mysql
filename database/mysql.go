@@ -2,9 +2,10 @@ package database
 
 import (
 	"fmt"
+	"mingdeng/setting"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"mingdeng/setting"
 )
 
 var (
@@ -20,6 +21,8 @@ func InitMySQL(cfg *setting.MySQLConfig) (err error) {
 	}
 	//fmt.Print(DB)
 	//return
+	/*Create*/
+	// 迁移 在数据库中创建Users表
 	sqlDB, err := DB.DB()
 	if err != nil {
 		fmt.Printf("DB.DB() failed,err:%v\n", err)
