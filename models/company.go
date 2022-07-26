@@ -16,8 +16,8 @@ func (Company) TableName() string {
 	return "company"
 }
 
-func InitCompany() {
-	err := database.DB.Set("gorm:table_options", "ENGINE=InnoDB").AutoMigrate(&Company{})
+func InitCompany() (err error) {
+	err = database.DB.Set("gorm:table_options", "ENGINE=InnoDB").AutoMigrate(&Company{})
 	fmt.Println(err)
 	return
 }

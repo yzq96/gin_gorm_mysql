@@ -22,8 +22,8 @@ type AdminApi struct {
 	CreateTime string `json:"create_time"`
 }
 
-func InitAdmin() {
-	err := database.DB.Set("gorm:table_options", "ENGINE=InnoDB").AutoMigrate(&Admin{})
+func InitAdmin() (err error) {
+	err = database.DB.Set("gorm:table_options", "ENGINE=InnoDB").AutoMigrate(&Admin{})
 	fmt.Println(err)
 	return
 }
